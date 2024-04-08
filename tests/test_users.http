@@ -1,0 +1,38 @@
+# Test User Signup
+POST http://127.0.0.1:8000/signup/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "newuser",
+  "email": "newuser@example.com",
+  "password": "securepassword123"
+}
+
+###
+
+# Test User Signin
+POST http://127.0.0.1:8000/signin/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "newuser",
+  "password": "securepassword123"
+}
+
+###
+
+# Test Update Profile
+PUT http://127.0.0.1:8000/update-profile/newuser
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJuZXd1c2VyIiwiZXhwIjoxNzEyNTkzMTU4fQ.c4RbzuGqRmeCjstAiBCsDYR6VH4K1hIVrzCskF945DI
+
+{
+  "username": "newuser",
+  "email": "newuserupdated@example.com",
+  "bio": "Just a bio update."
+}
+
+###
