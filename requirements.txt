@@ -1,4 +1,4 @@
-# Generated on Mon Apr  8 21:11:18 IST 2024
+# Generated on Mon Apr  8 22:53:20 IST 2024
 annotated-types==0.6.0
 anyio==4.3.0
 bcrypt==4.1.2
@@ -9,6 +9,7 @@ fastapi==0.110.1
 h11==0.14.0
 httptools==0.6.1
 idna==3.6
+loguru==0.7.2
 motor==3.4.0
 passlib==1.7.4
 pydantic==2.6.4

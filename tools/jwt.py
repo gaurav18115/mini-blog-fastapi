@@ -2,12 +2,14 @@ from datetime import datetime, timedelta
 
 import jwt
 from fastapi import HTTPException, Security
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials, OAuth2PasswordBearer
 from jwt import PyJWTError
 
 from common.const import SECRET_KEY, ALGORITHM
 
 security = HTTPBearer()
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 
 def create_access_token(data: dict, expires_delta: timedelta = None):
@@ -21,13 +23,12 @@ def create_access_token(data: dict, expires_delta: timedelta = None):
     return encoded_jwt
 
 
-def verify_token(http_authorization_credentials: HTTPAuthorizationCredentials = Security(security)):
+def verify_token(http_authorization_credentials: HTTPAuthorizationCredentials = Security(security)) -> dict:
     token = http_authorization_credentials.credentials
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        username: str = payload.get("sub")
-        if username is None:
+        if 'sub' not in payload:
             raise HTTPException(status_code=403, detail="Invalid authentication credentials")
-        return payload  # or return a user object based on the username in payload
+        return payload
     except PyJWTError:
         raise HTTPException(status_code=403, detail="Invalid authentication credentials")

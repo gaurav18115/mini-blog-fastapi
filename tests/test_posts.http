@@ -1,0 +1,37 @@
+# Test Create Post
+POST http://127.0.0.1:8000/posts/
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJuZXd1c2VyIiwiZXhwIjoxNzEyNjAwMDk5fQ.0AWHgamHuV5qT7k23Ky9m1ZdFp4kOO0vp9icl1kEESc
+
+{
+  "title": "My First Post",
+  "status": "draft",
+  "content": "This is the content of my first post.",
+  "category": "General",
+  "author_name": "newuser"
+}
+
+###
+
+# Test Update Post
+PUT http://127.0.0.1:8000/posts/wtz-htg-luq-193
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJuZXd1c2VyIiwiZXhwIjoxNzEyNjAwMDk5fQ.0AWHgamHuV5qT7k23Ky9m1ZdFp4kOO0vp9icl1kEESc
+
+{
+  "title": "My First Post - Edited",
+  "status": "published",
+  "content": "This is the edited content of my first post.",
+  "category": "Updates"
+}
+
+###
+
+# Test Delete Post
+DELETE http://127.0.0.1:8000/posts/wtz-htg-luq-193
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJuZXd1c2VyIiwiZXhwIjoxNzEyNjAwMDk5fQ.0AWHgamHuV5qT7k23Ky9m1ZdFp4kOO0vp9icl1kEESc
+
+###
